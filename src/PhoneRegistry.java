@@ -20,6 +20,7 @@ public class PhoneRegistry {
         name = userInput.nextLine();
         System.out.println("Enter phone number:");
         number = userInput.nextLine();
+        System.out.println();
 
         personPhoneNumber.put(name, number);
     }
@@ -31,37 +32,34 @@ public class PhoneRegistry {
 
         String number = personPhoneNumber.get(name);
 
-        if(number == null) {
+        if (number == null) {
             System.out.println("No such entry!");
-        }
-        else {
-            System.out.println(number);
+        } else {
+            System.out.println(number + "\n");
         }
     }
 
     public void menu() {
         boolean exit = false;
 
-
         do {
             System.out.println("""
                     1. Get phone number
                     2. Add a new entry
-                    3. Exit
-                    """);
+                    3. Exit""");
 
 
-            int selection = userInput.nextInt();
-            userInput.nextLine();
-            switch(selection) {
-                case 1 -> getPhoneNumber();
-                case 2 -> addEntry();
-                case 3 -> exit = true;
+            String selection = userInput.nextLine();
+
+            switch (selection) {
+                case "1" -> getPhoneNumber();
+                case "2" -> addEntry();
+                case "3" -> exit = true;
                 default -> System.out.println("Please enter an integer between 1 and 3.");
+
             }
-        } while(!exit);
 
 
+        } while (!exit);
     }
-
 }
